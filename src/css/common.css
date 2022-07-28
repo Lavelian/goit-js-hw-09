@@ -16,4 +16,16 @@ img {
   display: block;
   max-width: 100%;
 }
+.box{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
+.timer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
