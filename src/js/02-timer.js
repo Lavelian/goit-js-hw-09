@@ -30,10 +30,10 @@ const options = {
           updateClockFace(convertMs(diff));
           if (diff <= 0) {
             clearInterval(timerId);
-            daysElement.textContent = '00';
-            hoursElement.textContent = '00';
-            minutesElement.textContent = '00';
-            secondsElement.textContent = '00';
+            daysElement.textContent = '00 days';
+            hoursElement.textContent = '00 hours';
+            minutesElement.textContent = '00 minutes';
+            secondsElement.textContent = '00 seconds';
           }
         }, 1000);
       });
