@@ -4,20 +4,8 @@ const dataObj = {};
 
 const formEl = document.querySelector('.form');
 
-function onSubmitForm(evt) {
-  evt.preventDefault();
-  evt.target.reset();
-  console.log(dataObj);
-
-  for (let i = 1; i <= dataObj.amount; i++) {
-    createPromise(i, (dataObj.delay += dataObj.step))
-      .then(({ position, delay }) => {
-        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-      })
-      .catch(({ position, delay }) => {
-        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-      });
-  }
+function onInput(evt) {
+  dataObj[evt.target.name] = Number(evt.target.value);
 }
 
 function createPromise(position, delay) {
@@ -33,8 +21,20 @@ function createPromise(position, delay) {
   });
 }
 
-function onInput(evt) {
-  dataObj[evt.target.name] = Number(evt.target.value);
+function onSubmitForm(evt) {
+  evt.preventDefault();
+  evt.target.reset();
+  console.log(dataObj);
+
+  for (let i = 1; i <= dataObj.amount; i++) {
+    createPromise(i, (dataObj.delay += dataObj.step))
+      .then(({ position, delay }) => {
+        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      })
+      .catch(({ position, delay }) => {
+        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+      });
+  }
 }
 
 formEl.addEventListener('submit', onSubmitForm);
