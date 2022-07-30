@@ -23,9 +23,6 @@ function createPromise(position, delay) {
 
 function onSubmitForm(evt) {
   evt.preventDefault();
-  evt.target.reset();
-  console.log(dataObj);
-
   for (let i = 1; i <= dataObj.amount; i++) {
     createPromise(i, (dataObj.delay += dataObj.step))
       .then(({ position, delay }) => {
@@ -35,6 +32,7 @@ function onSubmitForm(evt) {
         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
+  evt.target.reset();
 }
 
 formEl.addEventListener('submit', onSubmitForm);

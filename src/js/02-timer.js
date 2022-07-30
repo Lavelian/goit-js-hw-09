@@ -27,14 +27,11 @@ const options = {
       btnStart.addEventListener('click', () => {
         timerId = setInterval(() => {
           const diff = selectedDates[0] - new Date();
-          updateClockFace(convertMs(diff));
           if (diff <= 0) {
             clearInterval(timerId);
-            daysElement.textContent = '00';
-            hoursElement.textContent = '00';
-            minutesElement.textContent = '00';
-            secondsElement.textContent = '00';
+            return;
           }
+          updateClockFace(convertMs(diff));
         }, 1000);
       });
     }
